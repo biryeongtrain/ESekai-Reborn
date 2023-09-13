@@ -1,0 +1,10 @@
+{
+  "values" : [
+    "esekai:esekai_chaos",
+    "esekai:esekai_fire",
+    "esekai:esekai_frost",
+    "esekai:esekai_heal",
+    "esekai:esekai_lightning",
+    "esekai:esekai_physical"
+  ]
+}

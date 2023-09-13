@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "net.qf.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "LivingEntityMixin",
+    "PlayerEntityMixin",
+    "PlayerManagerMixin",
+    "ServerPlayerEntityMixin",
+    "accessors.DamageSourcesAccessor",
+    "accessors.LivingEntityAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}
