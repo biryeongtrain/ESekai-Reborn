@@ -34,6 +34,7 @@ public class ESekaiAddModifierCommand {
         var school = ESekaiSchool.valueOf(schoolId.toUpperCase());
         players.forEach(player -> {
             var instance = player.getAttributes().getCustomInstance(school.getScalingAttribute());
+            assert instance != null;
             instance.addPersistentModifier(new EntityAttributeModifier(uuid, "esekai_debug_stat", value / 100, EntityAttributeModifier.Operation.MULTIPLY_BASE));
         });
         return 0;

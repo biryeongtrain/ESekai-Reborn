@@ -6,22 +6,21 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.text.*;
-import net.minecraft.util.Formatting;
+import net.minecraft.text.HoverEvent;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Text;
 import net.qf.api.ESekaiSchool;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.text.AttributeSet;
+import org.jetbrains.annotations.NotNull;
 
 import static net.qf.ESekai.MOD_ID;
 
 
 public class QfDamageSource extends DamageSource {
 
-    @Nullable
+    @NotNull
     private final ESekaiSchool school;
 
-    public QfDamageSource(RegistryEntry<DamageType> type, Entity attacker, ESekaiSchool school) {
+    public QfDamageSource(RegistryEntry<DamageType> type, Entity attacker, @NotNull ESekaiSchool school) {
         super(type, attacker);
         this.school = school;
     }

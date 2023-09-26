@@ -7,10 +7,10 @@
     "PlayerEntityMixin",
     "PlayerManagerMixin",
     "ServerPlayerEntityMixin",
-    "accessors.DamageSourcesAccessor",
-    "accessors.LivingEntityAccessor"
+    "ServerPlayerInteractionManagerMixin",
+    "accessors.DamageSourcesAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
-	}
+  }
 }

@@ -9,24 +9,26 @@ import net.minecraft.registry.RegistryKeys;
 import net.qf.impl.QfDamageSource;
 import net.qf.mixin.accessors.DamageSourcesAccessor;
 
+import java.util.List;
+
 public class ESekaiDamageSource {
     public static DamageSource create(ESekaiSchool school, LivingEntity attacker) {
         if (attacker.isPlayer()) {
-            return player(school, (PlayerEntity) attacker);
+            return player(school, (PlayerEntity) attacker, List.of(ESekaiDamageTag.ATTACK));
         } else {
-            return mob(school, attacker);
+            return mob(school, attacker, List.of(ESekaiDamageTag.ATTACK));
         }
     }
 
-    public static DamageSource mob(ESekaiSchool school, LivingEntity attacker) {
-        return create(school, "mob", attacker);
+    public static DamageSource mob(ESekaiSchool school, LivingEntity attacker, List<ESekaiDamageTag> tags) {
+        return create(school, "mob", attacker, tags);
     }
 
-    public static DamageSource player(ESekaiSchool school, PlayerEntity attacker) {
-        return create(school, "player", attacker);
+    public static DamageSource player(ESekaiSchool school, PlayerEntity attacker, List<ESekaiDamageTag> tags) {
+        return create(school, "player", attacker, tags);
     }
 
-    private static DamageSource create(ESekaiSchool school, String name, Entity attacker) {
+    public static DamageSource create(ESekaiSchool school, String name, Entity attacker, List<ESekaiDamageTag> tags) {
         var key = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, school.getDamageTypeId());
         var registry = ((DamageSourcesAccessor)attacker.getDamageSources()).getRegistry();
         return new QfDamageSource(registry.entryOf(key), attacker, school);

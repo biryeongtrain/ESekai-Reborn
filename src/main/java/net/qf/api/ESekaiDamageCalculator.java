@@ -9,36 +9,36 @@ import java.util.List;
 
 public class ESekaiDamageCalculator {
     private static final SecureRandom rand = new SecureRandom();
-    public record Result(ESekaiSchool school, double baseValue) {
+    public record Result(ESekaiSchool school, float baseValue) {
         private enum CriticalType {
             NO_CRITICAL, CAN_OCCUR, MUST
         }
 
-        public double randomValue() {
+        public float randomValue() {
             return value(CriticalType.CAN_OCCUR, MultiplierCombiner.ZERO);
         }
 
-        public double randomValue(MultiplierCombiner combiner) {
+        public float randomValue(MultiplierCombiner combiner) {
             return value(CriticalType.CAN_OCCUR, combiner);
         }
 
-        public double nonCriticalValue() {
+        public float nonCriticalValue() {
             return value(CriticalType.NO_CRITICAL, MultiplierCombiner.ZERO);
         }
 
-        public double nonCriticalValue(MultiplierCombiner combiner) {
+        public float nonCriticalValue(MultiplierCombiner combiner) {
             return value(CriticalType.NO_CRITICAL, combiner);
         }
 
-        public double forceCriticalValue() {
+        public float forceCriticalValue() {
             return value(CriticalType.MUST, MultiplierCombiner.ZERO);
         }
 
-        public double forceCriticalValue(MultiplierCombiner combiner) {
+        public float forceCriticalValue(MultiplierCombiner combiner) {
             return value(CriticalType.NO_CRITICAL, combiner);
         }
-        private double value(CriticalType type, MultiplierCombiner combiner) {
-            var base = baseValue * (combiner.additional) * (combiner.multiplier);
+        private float value(CriticalType type, MultiplierCombiner combiner) {
+            float base = (float) (baseValue * (combiner.additional) * (combiner.multiplier));
             if (type != CriticalType.NO_CRITICAL) {
                 float funNum = rand.nextFloat() * 100;
                 boolean isCritical = funNum < (combiner.criticalChance);

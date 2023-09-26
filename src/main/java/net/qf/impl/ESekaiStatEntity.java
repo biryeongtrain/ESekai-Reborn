@@ -17,4 +17,5 @@ public interface ESekaiStatEntity {
     double esekai$getCommonCriticalMultiplier();
     double esekai$getAttackCriticalMultiplier();
     double esekai$getSpellCriticalMultiplier();
+    double esekai$getReduecedDamage(ESekaiSchool school, double amount);
 }

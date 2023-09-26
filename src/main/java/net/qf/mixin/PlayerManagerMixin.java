@@ -4,7 +4,6 @@ import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import net.qf.mixin.accessors.LivingEntityAccessor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,6 +18,6 @@ public class PlayerManagerMixin {
     private void esekai$copyPlayerAttribute(ServerPlayerEntity player, boolean alive, CallbackInfoReturnable<ServerPlayerEntity> cir,
                                             BlockPos blockPos, float f, boolean bl, ServerWorld serverWorld, Optional optional,
                                             ServerWorld serverWorld2, ServerPlayerEntity serverPlayerEntity) {
-        ((LivingEntityAccessor)serverPlayerEntity).setAttributes(player.getAttributes());
+        serverPlayerEntity.getAttributes().setFrom(player.getAttributes());
     }
 }

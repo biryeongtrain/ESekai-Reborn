@@ -38,6 +38,10 @@ public class ESekaiAttributeStat {
     public static final EntityAttribute COMMON_CRITICAL_CHANCE = registerAttribute(getId("generic_common_critical_chance"), "attribute.generic.name.common_critical_chance", 5, -100, 100);
     public static final EntityAttribute COMMON_CRITICAL_MULTIPLIER = registerAttribute(getId("generic_common_critical_multiplier"), "attribute.generic.name.common_critical_multiplier", 1, -1, 100);
 
+    // NBT ID
+    public static final String NBT_ACTIVE_SKILL_NAME = "esekai_active_skill";
+    public static final String NBT_COOLDOWNS_NAME = "esekai_cooldowns";
+
     public static final ObjectSet<EntityAttribute> ATTRIBUTES = new ObjectOpenHashSet<>();
     private static EntityAttribute registerAttribute(Identifier id, String translationKey) {
         return registerAttribute(id, translationKey, 0, Integer.MIN_VALUE, Integer.MAX_VALUE);

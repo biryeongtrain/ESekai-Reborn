@@ -54,4 +54,11 @@ public enum ESekaiSchool {
     public String getTranslationText() {
         return MOD_ID + "." + "element." + this.name().toLowerCase();
     }
+    public static String asLowerName(ESekaiSchool school) {
+        return school.asLowerName();
+    }
+
+    public String asLowerName() {
+        return this.name().toLowerCase();
+    }
 }

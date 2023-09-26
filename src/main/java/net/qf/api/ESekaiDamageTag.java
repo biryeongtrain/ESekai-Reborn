@@ -10,7 +10,8 @@ public enum ESekaiDamageTag {
     MELEE(MELEE_DAMAGE_ATTRIBUTE),
     SPELL(SPELL_DAMAGE_ATTRIBUTE),
     ATTACK(ATTACK_DAMAGE_ATTRIBUTE),
-    HEAL_CONVERT(HEAL_EFFICIENT_ATTRIBUTE);
+    HEAL_CONVERT(HEAL_EFFICIENT_ATTRIBUTE),
+    HEAL(HEAL_EFFICIENT_ATTRIBUTE);
 
 
     ESekaiDamageTag(EntityAttribute increaseModifier) {
@@ -24,5 +25,9 @@ public enum ESekaiDamageTag {
     }
     public boolean hasCriticalModifier() {
         return this == ATTACK || this == SPELL;
+    }
+
+    public String asLowerName() {
+        return this.name().toLowerCase();
     }
 }
