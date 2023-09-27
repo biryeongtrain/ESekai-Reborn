@@ -85,7 +85,7 @@ public record SkillInfo(SkillMechanism mechanism, TargetType targetType, float r
                     double maxY = Math.max(properties.caster.getY(), location.y);
                     double maxZ = Math.max(properties.caster.getZ(), location.z);
 
-                    Box box = new Box(minX - properties.radius, minY - properties.vertical, minZ - properties.radius
+                    Box box = new Box(minX - properties.radius, minY, minZ - properties.radius
                             , maxX + properties.radius, maxY + properties.vertical, maxZ + properties.radius);
 
                     if (properties.debug) {

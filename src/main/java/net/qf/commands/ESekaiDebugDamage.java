@@ -44,7 +44,7 @@ public class ESekaiDebugDamage {
         var player = ctx.getSource().getPlayer();
         var skillUser = (ESekaiSkillUser) player;
 
-        skillUser.setSkill(new ESekaiCreationSkill(TriggerType.CAST, new SkillInfo(SkillInfo.SkillMechanism.AOE, SkillInfo.TargetType.ENEMIES, 10, 4, true), 10F, ESekaiSchool.FIRE, List.of(ATTACK, SPELL), 10F, 0F));
+        skillUser.setSkill(new ESekaiCreationSkill(TriggerType.CAST, new SkillInfo(SkillInfo.SkillMechanism.AOE, SkillInfo.TargetType.ENEMIES, 10, 4, true), 10F, ESekaiSchool.FIRE, List.of(ATTACK, SPELL), 10F, 2F));
         return 0;
     }
 }

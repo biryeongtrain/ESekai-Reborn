@@ -6,10 +6,11 @@ import net.qf.api.TriggerType;
 
 public interface ESekaiSkillUser {
     boolean hasSkill();
-    boolean canCastSkills();
+    boolean canCastSkill(TriggerType type);
     void setSkill(ESekaiCreationSkill skill);
     boolean hasActiveSkill();
     ActionResult castActiveSkill();
     boolean hasPassiveSkill(TriggerType type);
     ActionResult castPassiveSkill(TriggerType type);
+    void setCooldown(TriggerType type, int tick);
 }

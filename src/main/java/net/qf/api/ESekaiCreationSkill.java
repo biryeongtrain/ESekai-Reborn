@@ -6,6 +6,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
 import net.qf.impl.ESekaiSkillUser;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public record ESekaiCreationSkill(TriggerType type, SkillInfo info, float baseDa
      * when projectile entity collisions, then its spell will be activated. but of course, spell cooldown is will be cycled when entity spawns
      * @param caster LivingEntity that the caster.
      */
-    public void cast(LivingEntity caster) {
+    public ActionResult cast(LivingEntity caster) {
         ESekaiSkillUser user = (ESekaiSkillUser) caster;
         SkillInfo.Properties<LivingEntity> properties = this.info.getProperties(LivingEntity.class, caster);
         List<LivingEntity> targets = properties.search();
@@ -46,7 +47,7 @@ public record ESekaiCreationSkill(TriggerType type, SkillInfo info, float baseDa
             if (caster instanceof ServerPlayerEntity player) {
                 player.sendMessage(Text.literal("no entities found"));
             }
-            return;
+            return ActionResult.FAIL;
         }
 
         ESekaiDamageCalculator.Result result = new ESekaiDamageCalculator.Result(this.school, this.baseDamage);
@@ -64,7 +65,8 @@ public record ESekaiCreationSkill(TriggerType type, SkillInfo info, float baseDa
                     }
                 }
             });
-        return;
+            user.setCooldown(this.type, (int) (this.cooldown * 20));
+        return ActionResult.success(false);
     }
 
     

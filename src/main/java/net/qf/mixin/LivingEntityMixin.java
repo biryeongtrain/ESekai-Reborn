@@ -5,6 +5,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtOps;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.MathHelper;
 import net.qf.api.ESekaiDamageTag;
@@ -175,8 +177,18 @@ public abstract class LivingEntityMixin implements ESekaiStatEntity, ESekaiSkill
     @Unique
     private void esekai$reduceCooldown() {
         for (Object2IntMap.Entry<TriggerType> triggerTypeEntry : ESEKAI$COOLDOWN_MAP.object2IntEntrySet()) {
-            ESEKAI$COOLDOWN_MAP.put(triggerTypeEntry.getKey(), triggerTypeEntry.getIntValue() - 1);
+            ESEKAI$COOLDOWN_MAP.computeIntIfPresent(triggerTypeEntry.getKey(), (type, value) -> {
+                if (value > 0) {
+                    return value - 1;
+                }
+                return value;
+            });
         }
+    }
+
+    @Override
+    public void setCooldown(TriggerType type, int tick) {
+        this.ESEKAI$COOLDOWN_MAP.put(type, tick);
     }
 
     @Override
@@ -187,9 +199,20 @@ public abstract class LivingEntityMixin implements ESekaiStatEntity, ESekaiSkill
     }
 
     @Override
-    public ActionResult castActiveSkill() {
-        this.ACTIVE_SKILL.cast((LivingEntity) (Object) this);
+    public boolean canCastSkill(TriggerType type) {
+        return this.ESEKAI$COOLDOWN_MAP.getInt(type) <= 0;
+    }
 
-        return ActionResult.success(false);
+    @Override
+    public ActionResult castActiveSkill() {
+        if (this.canCastSkill(CAST)) {
+            this.ACTIVE_SKILL.cast((LivingEntity) (Object) this);
+            return ActionResult.success(false);
+        }
+
+        if (((LivingEntity) (Object) this) instanceof ServerPlayerEntity player) {
+            player.sendMessage(Text.literal("cooldown. remaining time : " + this.ESEKAI$COOLDOWN_MAP.getInt(CAST)));
+        }
+        return ActionResult.FAIL;
     }
 }
