@@ -57,7 +57,7 @@ public class QfDamageSource extends DamageSource {
         MutableText text = (Text.literal(school.getIcon()));
         text.styled(style ->
             style.withColor(school.getColor())
-                    .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.empty().append(Text.translatable(school.getTranslationText())).styled(style2 -> style.withColor(school.getColor())))));
+                    .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.empty().append((school.getTranslationText())).styled(style2 -> style.withColor(school.getColor())))));
         return text;
     }
 }

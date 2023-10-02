@@ -43,5 +43,30 @@
 
   "_comment_" : "DO NOT CHANGE THIS.",
   "esekai.death.qf_damage.player" : "%2$s %3$s §c\uD83D\uDDE1 %1$s",
-  "esekai.death.qf_damage.player.item" : "%2$s %4$s %3$s %1$s"
+  "esekai.death.qf_damage.player.item" : "%2$s %4$s %3$s %1$s",
+
+  "_comment_" : "Scroll and Skill Data",
+  "item.esekai.skill_scroll": "스킬 주문서",
+  "esekai.item.skill_scroll.empty": "부여된 스킬이 없습니다.",
+  "esekai.item.skill_scroll.level": "레벨 : ",
+  "esekai.item.skill_scroll.trigger_type": "트리거 타입 : ",
+  "esekai.item.skill_scroll.school": "원소 : ",
+  "esekai.item.skill_scroll.damage": "기본 피해량 : ",
+  "esekai.item.skill_scroll.radius": "범위 : ",
+  "esekai.skill.trigger.hit": "피해 시",
+  "esekai.skill.trigger.attack": "공격 시",
+  "esekai.skill.trigger.heal": "회복 시",
+  "esekai.skill.trigger.dodge": "회피 시",
+  "esekai.skill.trigger.cast": "시전",
+  "esekai.skill.trigger.error": "! 오류 !",
+  "esekai.item.skill_scroll.mechanism": "범위 방식 : ",
+  "esekai.item.skill_scroll.target_type": "대상 : ",
+  "esekai.item.skill_scroll.cooldown": "쿨타임 : ",
+  "esekai.item.skill_scroll.cost": "비용 : ",
+  "esekai.skill.mechanism.aoe": "광역",
+  "esekai.skill.mechanism.in_front": "전방의 적",
+  "esekai.skill.mechanism.one_target": "단일",
+  "esekai.skill.target_type.enemies" : "적",
+  "esekai.skill.target_type.all" : "모든 대상",
+  "esekai.skill.target_type.alies" : "아군"
 }

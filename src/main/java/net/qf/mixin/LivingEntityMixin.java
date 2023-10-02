@@ -32,6 +32,8 @@ public abstract class LivingEntityMixin implements ESekaiStatEntity, ESekaiSkill
     @Unique
     private ESekaiCreationSkill ACTIVE_SKILL = null;
     @Unique
+    private int esekai$level = 1;
+    @Unique
     private Object2IntMap<TriggerType> ESEKAI$COOLDOWN_MAP = new Object2IntOpenHashMap<>();
 
     @Shadow public abstract double getAttributeValue(EntityAttribute attribute);
@@ -214,5 +216,30 @@ public abstract class LivingEntityMixin implements ESekaiStatEntity, ESekaiSkill
             player.sendMessage(Text.literal("cooldown. remaining time : " + this.ESEKAI$COOLDOWN_MAP.getInt(CAST)));
         }
         return ActionResult.FAIL;
+    }
+
+    @Override
+    public boolean hasSkill() {
+        return false;
+    }
+
+    @Override
+    public boolean hasActiveSkill() {
+        return this.ACTIVE_SKILL != null;
+    }
+
+    @Override
+    public boolean hasPassiveSkill(TriggerType type) {
+        return false;
+    }
+
+    @Override
+    public ActionResult castPassiveSkill(TriggerType type) {
+        return null;
+    }
+
+    @Override
+    public int getLevel() {
+        return this.esekai$level;
     }
 }

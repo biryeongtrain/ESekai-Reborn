@@ -7,10 +7,15 @@ import it.unimi.dsi.fastutil.objects.ObjectLists;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.predicate.entity.EntityPredicates;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Text;
+import net.minecraft.text.TextColor;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.qf.ESekai;
 import net.qf.impl.util.EntityChecker;
 import net.qf.impl.util.RaycastHelper;
 import net.qf.impl.util.SkillUtilities;
@@ -120,6 +125,9 @@ public record SkillInfo(SkillMechanism mechanism, TargetType targetType, float r
             ;
 
             public abstract <T extends LivingEntity> List<T> getTargets(Properties properties);
+            public MutableText getTranslation() {
+                return Text.translatable(ESekai.getTranslation("skill.mechanism." + this.name().toLowerCase()));
+            }
         }
 
         public enum TargetType {
@@ -127,6 +135,11 @@ public record SkillInfo(SkillMechanism mechanism, TargetType targetType, float r
                 @Override
                 public boolean isIncludes(LivingEntity caster, LivingEntity target) {
                     return !ENEMIES.isIncludes(caster, target);
+                }
+
+                @Override
+                public TextColor getColor() {
+                    return TextColor.fromFormatting(Formatting.GREEN);
                 }
             },
             ENEMIES {
@@ -153,6 +166,11 @@ public record SkillInfo(SkillMechanism mechanism, TargetType targetType, float r
                 public boolean includesCaster() {
                     return false;
                 }
+
+                @Override
+                public TextColor getColor() {
+                    return TextColor.fromFormatting(Formatting.RED);
+                }
             },
             ALL {
                 @Override
@@ -164,6 +182,11 @@ public record SkillInfo(SkillMechanism mechanism, TargetType targetType, float r
                 public boolean isIncludes(LivingEntity caster, LivingEntity target) {
                     return true;
                 }
+
+                @Override
+                public TextColor getColor() {
+                    return TextColor.fromFormatting(Formatting.GOLD);
+                }
             };
 
             public <T extends LivingEntity> List<T> getMatchingEntities(List<T> list, LivingEntity caster) {
@@ -174,6 +197,10 @@ public record SkillInfo(SkillMechanism mechanism, TargetType targetType, float r
             public abstract boolean isIncludes(LivingEntity caster, LivingEntity target);
             public boolean includesCaster() {
                 return true;
+            }
+            public abstract TextColor getColor();
+            public MutableText getTranslation() {
+                return Text.translatable(ESekai.getTranslation("skill.target_type." + this.name().toLowerCase())).styled(style -> style.withColor(this.getColor()));
             }
         }
 

@@ -1,6 +1,8 @@
 package net.qf.api;
 
 import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 import java.util.Locale;
@@ -51,8 +53,8 @@ public enum ESekaiSchool {
         return defendingAttribute;
     }
 
-    public String getTranslationText() {
-        return MOD_ID + "." + "element." + this.name().toLowerCase();
+    public MutableText getTranslationText() {
+        return Text.translatable(MOD_ID + "." + "element." + this.name().toLowerCase());
     }
     public static String asLowerName(ESekaiSchool school) {
         return school.asLowerName();

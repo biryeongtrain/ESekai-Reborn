@@ -39,5 +39,31 @@
 
   "_comment_" : "DO NOT CHANGE THIS.",
   "esekai.death.qf_damage.player" : "%2$s %3$s §c\uD83D\uDDE1 %1$s",
-  "esekai.death.qf_damage.player.item" : "%2$s %4$s %3$s %1$s"
+  "esekai.death.qf_damage.player.item" : "%2$s %4$s %3$s %1$s",
+
+  "_comment_" : "Scroll and Skill Data",
+  "item.esekai.skill_scroll" : "Skill Scroll",
+  "esekai.item.skill_scroll.empty" : "No skill included.",
+  "esekai.item.skill_scroll.level" : "Level : ",
+  "esekai.item.skill_scroll.trigger_type" : "Trigger : ",
+  "esekai.item.skill_scroll.mechanism" : "Mechanism : ",
+  "esekai.item.skill_scroll.target_type" : "Target Type : ",
+  "esekai.item.skill_scroll.school" : "Element : ",
+  "esekai.item.skill_scroll.damage" : "Damage : ",
+  "esekai.item.skill_scroll.radius" : "Radius : ",
+  "esekai.item.skill_scroll.cooldown" : "Cooldown : ",
+  "esekai.item.skill_scroll.cost" : "Cost : ",
+  "esekai.skill.trigger.hit" : "hit",
+  "esekai.skill.trigger.attack" : "attack",
+  "esekai.skill.trigger.heal" : "heal",
+  "esekai.skill.trigger.dodge" : "dodge",
+  "esekai.skill.trigger.cast" : "cast",
+  "esekai.skill.trigger.error" : "error",
+  "esekai.skill.mechanism.aoe" : "AOE",
+  "esekai.skill.mechanism.in_front" : "In front of",
+  "esekai.skill.mechanism.one_target" : "One target",
+  "esekai.skill.target_type.enemies" : "Enemies",
+  "esekai.skill.target_type.all" : "All Targets",
+  "esekai.skill.target_type.alies" : "Alies"
+
 }
