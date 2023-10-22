@@ -1,11 +1,15 @@
 package net.qf;
 
+import eu.pb4.polymer.resourcepack.api.PolymerResourcePackUtils;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.util.Identifier;
-import net.qf.impl.register.ESekaiCommandRegister;
-import net.qf.impl.register.ESekaiItemRegister;
+import net.qf.impl.entity.anim.AnimationLoader;
+import net.qf.impl.register.ESekaiBlockregistry;
+import net.qf.impl.register.ESekaiCommandRegistry;
+import net.qf.impl.register.ESekaiEntityRegistry;
+import net.qf.impl.register.ESekaiItemRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,8 +20,14 @@ public class ESekai implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		LOGGER.info("You were run over by dump truck. Welcome to ESekai! :3");
-		CommandRegistrationCallback.EVENT.register(ESekaiCommandRegister::register);
-		ESekaiItemRegister.init();
+		PolymerResourcePackUtils.addModAssets(MOD_ID);
+		CommandRegistrationCallback.EVENT.register(ESekaiCommandRegistry::register);
+		ESekaiItemRegistry.init();
+		ESekaiBlockregistry.init();
+		ESekaiEntityRegistry.init();
+
+		AnimationLoader.registerMod(MOD_ID);
+		AnimationLoader.build();
 	}
 	
 	public static Identifier getId(String value) {

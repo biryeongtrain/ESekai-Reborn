@@ -64,6 +64,12 @@
   "esekai.skill.mechanism.one_target" : "One target",
   "esekai.skill.target_type.enemies" : "Enemies",
   "esekai.skill.target_type.all" : "All Targets",
-  "esekai.skill.target_type.alies" : "Alies"
-
+  "esekai.skill.target_type.alies" : "Alies",
+  "esekai.skill.second" : "s",
+  "esekai.skill.tag.projectile" : "Projectile",
+  "esekai.skill.tag.melee" : "Melee",
+  "esekai.skill.tag.attack" : "Attack",
+  "esekai.skill.tag.spell" : "Spell",
+  "esekai.skill.tag.heal_convert" : "Heal Convert",
+  "esekai.heal.tag.heal" : "Heal"
 }

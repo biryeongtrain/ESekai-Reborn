@@ -16,7 +16,7 @@ import java.util.List;
 import static net.minecraft.server.command.CommandManager.literal;
 import static net.qf.api.ESekaiDamageTag.ATTACK;
 import static net.qf.api.ESekaiDamageTag.SPELL;
-import static net.qf.impl.register.ESekaiItemRegister.SKILL_SCROLL;
+import static net.qf.impl.register.ESekaiItemRegistry.SKILL_SCROLL;
 
 public class ESekaiTestSkillScrollCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {

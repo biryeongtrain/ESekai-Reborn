@@ -2,6 +2,9 @@ package net.qf.api;
 
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Text;
+import net.qf.ESekai;
 
 import static net.qf.impl.stat.ESekaiAttributeStat.*;
 
@@ -29,5 +32,9 @@ public enum ESekaiDamageTag {
 
     public String asLowerName() {
         return this.name().toLowerCase();
+    }
+
+    public MutableText getTranslationText() {
+        return Text.translatable(ESekai.getTranslation("skill.tag." + asLowerName()));
     }
 }

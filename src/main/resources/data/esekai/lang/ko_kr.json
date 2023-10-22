@@ -68,5 +68,12 @@
   "esekai.skill.mechanism.one_target": "단일",
   "esekai.skill.target_type.enemies" : "적",
   "esekai.skill.target_type.all" : "모든 대상",
-  "esekai.skill.target_type.alies" : "아군"
+  "esekai.skill.target_type.alies" : "아군",
+  "esekai.skill.second" : "초",
+  "esekai.skill.tag.projectile" : "투사체",
+  "esekai.skill.tag.melee" : "근접",
+  "esekai.skill.tag.attack" : "공격",
+  "esekai.skill.tag.spell" : "주문",
+  "esekai.skill.tag.heal_convert" : "회복 변환",
+  "esekai.heal.tag.heal" : "회복"
 }

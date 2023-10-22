@@ -7,11 +7,13 @@ import net.minecraft.server.command.ServerCommandSource;
 import net.qf.commands.ESekaiAddModifierCommand;
 import net.qf.commands.ESekaiDebugDamage;
 import net.qf.commands.ESekaiTestSkillScrollCommand;
+import net.qf.commands.SetOwnerCommand;
 
-public class ESekaiCommandRegister {
+public class ESekaiCommandRegistry {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess, CommandManager.RegistrationEnvironment env) {
         ESekaiDebugDamage.register(dispatcher);
         ESekaiAddModifierCommand.register(dispatcher);
         ESekaiTestSkillScrollCommand.register(dispatcher);
+        SetOwnerCommand.register(dispatcher);
     }
 }
